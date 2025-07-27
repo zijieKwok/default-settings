@@ -97,19 +97,6 @@ if [ "$( opkg list-installed 2>/dev/null| grep -c "^dnsmasq")" -ne '0' ];then
   /etc/init.d/dnsmasq restart
 fi
 
-# extra packages
-#echo "src/gz openwrt_core https://mirrors.cernet.edu.cn/openwrt/releases/24.10.2/targets/x86/64/packages" >> /etc/opkg/distfeeds.conf
-#echo "src/gz openwrt_base https://mirrors.cernet.edu.cn/openwrt/releases/24.10.2/packages/x86_64/base" >> /etc/opkg/distfeeds.conf
-#echo "src/gz openwrt_kmods https://mirrors.cernet.edu.cn/openwrt/releases/24.10.2/targets/x86/64/kmods/6.6.93-1-1745ebad77278f5cdc8330d17a3f43d6" >> /etc/opkg/distfeeds.conf
-#echo "src/gz openwrt_luci https://mirrors.cernet.edu.cn/openwrt/releases/24.10.2/packages/x86_64/luci" >> /etc/opkg/distfeeds.conf
-#echo "src/gz openwrt_packages https://mirrors.cernet.edu.cn/openwrt/releases/24.10.2/packages/x86_64/packages" >> /etc/opkg/distfeeds.conf
-#echo "src/gz openwrt_routing https://mirrors.cernet.edu.cn/openwrt/releases/24.10.2/packages/x86_64/routing" >> /etc/opkg/distfeeds.conf
-#echo "src/gz openwrt_telephony https://mirrors.cernet.edu.cn/openwrt/releases/24.10.2/packages/x86_64/telephony" >> /etc/opkg/distfeeds.conf
-#echo "src/gz openwrt_extras https://mirrors.cqupt.edu.cn/openwrt/releases/24.10.2/x86_64" >> /etc/opkg/distfeeds.conf
-
-# extra packages
-# echo "src/gz openwrt_extras https://mirrors.cqupt.edu.cn/openwrt/releases/24.10.2/$(. /etc/openwrt_release ; echo $DISTRIB_ARCH)" >> /etc/opkg/distfeeds.conf
-
 # docker mirror
 if [ -f /etc/config/dockerd ] && [ $(grep -c daocloud.io /etc/config/dockerd) -eq '0' ]; then
     uci add_list dockerd.globals.registry_mirrors="https://docker.m.daocloud.io"
